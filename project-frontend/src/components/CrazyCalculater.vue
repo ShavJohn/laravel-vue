@@ -7,7 +7,7 @@
                   <option value=""></option>
                   <option value="+">+</option>
                   <option value="-">-</option>
-                  <option value="-">/</option>
+                  <option value="/">/</option>
                   <option value="*">*</option>
               </select>
               <input type="number" ref="num2">
