@@ -2,7 +2,7 @@
     <div>
         <headerCustom/>
         <form action="" @change="calculate"  style="position:relative;top:30px;left:30px">
-              <input type="number"  name="nam1" ref="num1">
+              <input type="number" ref="num1">
               <select name="oparaitor" ref="options">
                   <option value=""></option>
                   <option value="+">+</option>
@@ -10,7 +10,7 @@
                   <option value="-">/</option>
                   <option value="*">*</option>
               </select>
-              <input type="number" name="nam2" ref="num2">
+              <input type="number" ref="num2">
               <span>=</span>
               <span ref="result"></span>
         </form>
@@ -26,8 +26,8 @@
 
         let result;
         let options = this.$refs.options.value;
-        let num1 = this.$refs.num1.value;
-        let num2 = this.$refs.num2.value;
+        let num1 = parseFloat(this.$refs.num1.value);
+        let num2 = parseFloat(this.$refs.num2.value);
 
 
         switch(options)
