@@ -10,6 +10,7 @@
                 <b-nav-item><router-link class="text-decoration-none text-white" :to="{name: 'HelloWorld'}">Main</router-link></b-nav-item>
                 <b-nav-item><router-link class="text-decoration-none text-white" :to="{name: 'HomePage'}">Home</router-link></b-nav-item>
                 <b-nav-item><router-link class="text-decoration-none text-white" :to="{name: 'ColorManiak'}">ColorManiak</router-link></b-nav-item>
+                <b-nav-item><router-link class="text-decoration-none text-white" :to="{name: 'CrazyCalculater'}">CrazyCalculater</router-link></b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -42,7 +43,7 @@
 
 <script>
     export default {
-        
+
     }
 </script>
 
