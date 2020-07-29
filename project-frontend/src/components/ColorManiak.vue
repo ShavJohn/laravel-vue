@@ -26,6 +26,11 @@
         },
         watch: {
         },
+        mounted() {
+            this.axios.get('https://reqres.in/api/users').then(res => {
+              console.log(res)
+            })
+        },
         methods: {
             changeColor(e){
                let colorname =  e.target.value;

@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import HomePage from '../components/HomePage'
 import ColorManiak from '../components/ColorManiak'
 import CrazyCalculater from '../components/CrazyCalculater'
+import Users from '../components/usrs/Users'
+import UserProfile from '../components/usrs/UserProfile'
 
 Vue.use(Router)
 
@@ -14,5 +16,7 @@ export default new Router({
     {path: '/home', name: 'HomePage', component: HomePage},
     {path: '/color', name: 'ColorManiak', component: ColorManiak},
     {path: '/calculator', name: 'CrazyCalculater', component: CrazyCalculater},
+    {path: '/users', name: 'Users', component: Users},
+    {path: '/users/:id', name: 'User-Profile', component: UserProfile},
   ]
 })
