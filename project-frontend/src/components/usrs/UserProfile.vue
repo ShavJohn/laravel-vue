@@ -1,11 +1,15 @@
 <template>
   <div>
-        <h1>{{$route.params.id}}</h1>
+        <headerCustom/>
+        <h1>{{$route.params.first_name}}</h1>
+        <h1>{{$route.params.first_name}}</h1>
   </div>
 </template>
 
 <script>
+  import HeaderCustom from '../custom/Header-custom';
   export default {
+    components: {HeaderCustom},
       data() {
         return {
 
