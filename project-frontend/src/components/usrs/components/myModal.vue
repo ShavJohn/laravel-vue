@@ -1,7 +1,7 @@
 <template>
   <div class="myModal">
-      <b-button v-b-modal.modal-1 variant="success">Add User</b-button>
-      <b-modal id="modal-1" title="Registar">
+      <b-button v-b-modal.modal-scoped variant="success">Add User</b-button>
+      <b-modal id="modal-scoped" title="Registar">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-form-group
             id="input-group-1"
@@ -26,27 +26,15 @@
               placeholder="Enter name"
             ></b-form-input>
           </b-form-group>
-
-          <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-            <b-form-select
-              id="input-3"
-              v-model="form.food"
-              :options="foods"
-              required
-            ></b-form-select>
-          </b-form-group>
-
-          <b-form-group id="input-group-4">
-            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-              <b-form-checkbox value="me">Check me out</b-form-checkbox>
-              <b-form-checkbox value="that">Check that out</b-form-checkbox>
-            </b-form-checkbox-group>
-          </b-form-group>
-          <template >
-              <b-button id="model-footer" type="submit" variant="primary">Submit</b-button>
-              <b-button type="reset" variant="danger">Reset</b-button>
+          <template  v-slot:modal-footer="{ submit, reset }">
+              <b-button type="submit" variant="success" @click="submit()">Submit</b-button>
+              <b-button type="reset" variant="danger" @click="reset()">Reset</b-button>
           </template>
         </b-form>
+        <template  v-slot:modal-footer="{ submit, reset }">
+              <b-button type="submit" variant="success" @click="submit()">Submit</b-button>
+              <b-button type="reset" variant="danger" @click="reset()">Reset</b-button>
+        </template>
       </b-modal>
   </div>
 </template>
@@ -58,10 +46,7 @@
         form: {
           email: '',
           name: '',
-          food: null,
-          checked: []
         },
-        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
         show: true
       }
     },
@@ -70,13 +55,26 @@
         evt.preventDefault()
         alert(JSON.stringify(this.form))
       },
+      submit(){
+          this.axios.get('https://reqres.in/api/users').then(res => {
+              this.$bvModal.msgBoxOk('User has been created successfully', {
+                      title: 'Created',
+                      size: 'sm',
+                      buttonSize: 'sm',
+                      okVariant: 'success',
+                      headerClass: 'p-2 border-bottom-0',
+                      footerClass: 'p-2 border-top-0',
+                      centered: true
+                  })
+            }).catch((err) => {
+               console.log(err.response)
+            })
+      },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
         this.form.email = ''
         this.form.name = ''
-        this.form.food = null
-        this.form.checked = []
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
