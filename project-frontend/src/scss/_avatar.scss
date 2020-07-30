@@ -1,0 +1,18 @@
+.showPage {
+  color: rgb(214, 139, 42);
+}
+
+::-webkit-scrollbar{
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: rgba(252, 164, 1, 0.932);
+}
+
+
+
+::-webkit-scrollbar-track {
+  background: rgba(252, 51, 1, 0.678);
+}

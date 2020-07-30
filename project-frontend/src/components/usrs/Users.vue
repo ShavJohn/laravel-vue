@@ -7,7 +7,8 @@
           </template>
 
           <template v-slot:cell(actions)="data">
-              <router-link :to="{name: 'User-Profile', params: {id: data.item.id}}">Profile</router-link>
+              <router-link :to="{name: 'User-Profile', params: {id: data.item.id}}"><b-icon-eye-fill class="showPage"></b-icon-eye-fill></router-link>
+              <router-link @click="delUser" :to="{name: 'User-Profile', params: {id: data.item.id}}"><b-icon-trash style="color:red;"></b-icon-trash></router-link>
           </template>
       </b-table>
   </div>
@@ -40,6 +41,11 @@
             }).catch((err) => {
                console.log(err.response)
             })
+          },
+          delUser(){
+              this.axios.delete(`https://reqres.in/api/users/${this.$route.params.id}`).then(res => {
+                  alert('User has been Deleted')
+               })
           }
       },
   }
